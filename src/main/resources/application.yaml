@@ -1,0 +1,27 @@
+spring:
+  # 邮箱服务
+  mail:
+    username: xxx@163.com
+    host: smtp.163.com
+    # 授权码
+    password: xxxxx
+    port: 25
+
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/sie?useSSL=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+
+# 收件人邮箱
+email:
+  to: xxxx@gmail.com
+
+swagger:
+  enabled: true
+debug: false
