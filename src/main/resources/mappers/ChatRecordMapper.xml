@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.ChatRecordMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.ChatRecord">
+    <!--@mbg.generated-->
+    <!--@Table tb_chat_record-->
+    <id column="id" property="id" />
+    <result column="user_id" property="userId" />
+    <result column="nickname" property="nickname" />
+    <result column="avatar" property="avatar" />
+    <result column="content" property="content" />
+    <result column="ip_addr" property="ipAddr" />
+    <result column="ip_source" property="ipSource" />
+    <result column="type" property="type" />
+    <result column="create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, nickname, avatar, content, ip_addr, ip_source, `type`, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_chat_record
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_chat_record
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.ChatRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_chat_record (user_id, nickname, avatar, content, ip_addr, ip_source, `type`, 
+      create_time)
+    values (#{userId}, #{nickname}, #{avatar}, #{content}, #{ipAddr}, #{ipSource}, #{type}, 
+      #{createTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.ChatRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_chat_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="ipAddr != null">
+        ip_addr,
+      </if>
+      <if test="ipSource != null">
+        ip_source,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="nickname != null">
+        #{nickname},
+      </if>
+      <if test="avatar != null">
+        #{avatar},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="ipAddr != null">
+        #{ipAddr},
+      </if>
+      <if test="ipSource != null">
+        #{ipSource},
+      </if>
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.ChatRecord">
+    <!--@mbg.generated-->
+    update tb_chat_record
+    <set>
+      <if test="userId != null">
+        user_id = #{userId},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar},
+      </if>
+      <if test="content != null">
+        content = #{content},
+      </if>
+      <if test="ipAddr != null">
+        ip_addr = #{ipAddr},
+      </if>
+      <if test="ipSource != null">
+        ip_source = #{ipSource},
+      </if>
+      <if test="type != null">
+        `type` = #{type},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.ChatRecord">
+    <!--@mbg.generated-->
+    update tb_chat_record
+    set user_id = #{userId},
+      nickname = #{nickname},
+      avatar = #{avatar},
+      content = #{content},
+      ip_addr = #{ipAddr},
+      ip_source = #{ipSource},
+      `type` = #{type},
+      create_time = #{createTime}
+    where id = #{id}
+  </update>
+</mapper>

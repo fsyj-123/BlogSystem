@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.CategoryMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.Category">
+    <!--@mbg.generated-->
+    <!--@Table tb_category-->
+    <id column="id" property="id" />
+    <result column="category_name" property="categoryName" />
+    <result column="create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, category_name, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_category
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_category
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.Category" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_category (category_name, create_time)
+    values (#{categoryName}, #{createTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.Category" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="categoryName != null">
+        category_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="categoryName != null">
+        #{categoryName},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.Category">
+    <!--@mbg.generated-->
+    update tb_category
+    <set>
+      <if test="categoryName != null">
+        category_name = #{categoryName},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.Category">
+    <!--@mbg.generated-->
+    update tb_category
+    set category_name = #{categoryName},
+      create_time = #{createTime}
+    where id = #{id}
+  </update>
+</mapper>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.UniqueViewMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.UniqueView">
+    <!--@mbg.generated-->
+    <!--@Table tb_unique_view-->
+    <id column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="views_count" property="viewsCount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, create_time, views_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_unique_view
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_unique_view
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.UniqueView" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_unique_view (create_time, views_count)
+    values (#{createTime}, #{viewsCount})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.UniqueView" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_unique_view
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="viewsCount != null">
+        views_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="viewsCount != null">
+        #{viewsCount},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.UniqueView">
+    <!--@mbg.generated-->
+    update tb_unique_view
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="viewsCount != null">
+        views_count = #{viewsCount},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.UniqueView">
+    <!--@mbg.generated-->
+    update tb_unique_view
+    set create_time = #{createTime},
+      views_count = #{viewsCount}
+    where id = #{id}
+  </update>
+</mapper>

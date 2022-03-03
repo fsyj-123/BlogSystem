@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.UserInfo">
+    <!--@mbg.generated-->
+    <!--@Table tb_user_info-->
+    <id column="id" property="id" />
+    <result column="email" property="email" />
+    <result column="nickname" property="nickname" />
+    <result column="avatar" property="avatar" />
+    <result column="intro" property="intro" />
+    <result column="web_site" property="webSite" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="is_disable" property="isDisable" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, email, nickname, avatar, intro, web_site, create_time, update_time, is_disable
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user_info
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_user_info
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.UserInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_user_info (email, nickname, avatar, intro, web_site, create_time, update_time, 
+      is_disable)
+    values (#{email}, #{nickname}, #{avatar}, #{intro}, #{webSite}, #{createTime}, #{updateTime}, 
+      #{isDisable})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.UserInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="intro != null">
+        intro,
+      </if>
+      <if test="webSite != null">
+        web_site,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDisable != null">
+        is_disable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email},
+      </if>
+      <if test="nickname != null">
+        #{nickname},
+      </if>
+      <if test="avatar != null">
+        #{avatar},
+      </if>
+      <if test="intro != null">
+        #{intro},
+      </if>
+      <if test="webSite != null">
+        #{webSite},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+      <if test="isDisable != null">
+        #{isDisable},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.UserInfo">
+    <!--@mbg.generated-->
+    update tb_user_info
+    <set>
+      <if test="email != null">
+        email = #{email},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar},
+      </if>
+      <if test="intro != null">
+        intro = #{intro},
+      </if>
+      <if test="webSite != null">
+        web_site = #{webSite},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+      <if test="isDisable != null">
+        is_disable = #{isDisable},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.UserInfo">
+    <!--@mbg.generated-->
+    update tb_user_info
+    set email = #{email},
+      nickname = #{nickname},
+      avatar = #{avatar},
+      intro = #{intro},
+      web_site = #{webSite},
+      create_time = #{createTime},
+      update_time = #{updateTime},
+      is_disable = #{isDisable}
+    where id = #{id}
+  </update>
+</mapper>

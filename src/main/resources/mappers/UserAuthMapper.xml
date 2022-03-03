@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.UserAuthMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.UserAuth">
+    <!--@mbg.generated-->
+    <!--@Table tb_user_auth-->
+    <id column="id" property="id" />
+    <result column="user_info_id" property="userInfoId" />
+    <result column="username" property="username" />
+    <result column="password" property="password" />
+    <result column="login_type" property="loginType" />
+    <result column="ip_addr" property="ipAddr" />
+    <result column="ip_source" property="ipSource" />
+    <result column="create_time" property="createTime" />
+    <result column="last_login_time" property="lastLoginTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_info_id, username, `password`, login_type, ip_addr, ip_source, create_time, 
+    last_login_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user_auth
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_user_auth
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.UserAuth" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_user_auth (user_info_id, username, `password`, login_type, ip_addr, ip_source, 
+      create_time, last_login_time)
+    values (#{userInfoId}, #{username}, #{password}, #{loginType}, #{ipAddr}, #{ipSource}, 
+      #{createTime}, #{lastLoginTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.UserAuth" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_user_auth
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userInfoId != null">
+        user_info_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="loginType != null">
+        login_type,
+      </if>
+      <if test="ipAddr != null">
+        ip_addr,
+      </if>
+      <if test="ipSource != null">
+        ip_source,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userInfoId != null">
+        #{userInfoId},
+      </if>
+      <if test="username != null">
+        #{username},
+      </if>
+      <if test="password != null">
+        #{password},
+      </if>
+      <if test="loginType != null">
+        #{loginType},
+      </if>
+      <if test="ipAddr != null">
+        #{ipAddr},
+      </if>
+      <if test="ipSource != null">
+        #{ipSource},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.UserAuth">
+    <!--@mbg.generated-->
+    update tb_user_auth
+    <set>
+      <if test="userInfoId != null">
+        user_info_id = #{userInfoId},
+      </if>
+      <if test="username != null">
+        username = #{username},
+      </if>
+      <if test="password != null">
+        `password` = #{password},
+      </if>
+      <if test="loginType != null">
+        login_type = #{loginType},
+      </if>
+      <if test="ipAddr != null">
+        ip_addr = #{ipAddr},
+      </if>
+      <if test="ipSource != null">
+        ip_source = #{ipSource},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.UserAuth">
+    <!--@mbg.generated-->
+    update tb_user_auth
+    set user_info_id = #{userInfoId},
+      username = #{username},
+      `password` = #{password},
+      login_type = #{loginType},
+      ip_addr = #{ipAddr},
+      ip_source = #{ipSource},
+      create_time = #{createTime},
+      last_login_time = #{lastLoginTime}
+    where id = #{id}
+  </update>
+</mapper>

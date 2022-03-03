@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.TagMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.Tag">
+    <!--@mbg.generated-->
+    <!--@Table tb_tag-->
+    <id column="id" property="id" />
+    <result column="tag_name" property="tagName" />
+    <result column="create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, tag_name, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_tag
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_tag
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.Tag" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_tag (tag_name, create_time)
+    values (#{tagName}, #{createTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.Tag" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_tag
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tagName != null">
+        tag_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tagName != null">
+        #{tagName},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.Tag">
+    <!--@mbg.generated-->
+    update tb_tag
+    <set>
+      <if test="tagName != null">
+        tag_name = #{tagName},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.Tag">
+    <!--@mbg.generated-->
+    update tb_tag
+    set tag_name = #{tagName},
+      create_time = #{createTime}
+    where id = #{id}
+  </update>
+</mapper>

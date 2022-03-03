@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.RoleMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.Role">
+    <!--@mbg.generated-->
+    <!--@Table tb_role-->
+    <id column="id" property="id" />
+    <result column="role_name" property="roleName" />
+    <result column="role_label" property="roleLabel" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="is_disable" property="isDisable" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, role_name, role_label, create_time, update_time, is_disable
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_role
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_role
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.Role" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_role (role_name, role_label, create_time, update_time, is_disable)
+    values (#{roleName}, #{roleLabel}, #{createTime}, #{updateTime}, #{isDisable})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.Role" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="roleLabel != null">
+        role_label,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDisable != null">
+        is_disable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleName != null">
+        #{roleName},
+      </if>
+      <if test="roleLabel != null">
+        #{roleLabel},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+      <if test="isDisable != null">
+        #{isDisable},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.Role">
+    <!--@mbg.generated-->
+    update tb_role
+    <set>
+      <if test="roleName != null">
+        role_name = #{roleName},
+      </if>
+      <if test="roleLabel != null">
+        role_label = #{roleLabel},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+      <if test="isDisable != null">
+        is_disable = #{isDisable},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.Role">
+    <!--@mbg.generated-->
+    update tb_role
+    set role_name = #{roleName},
+      role_label = #{roleLabel},
+      create_time = #{createTime},
+      update_time = #{updateTime},
+      is_disable = #{isDisable}
+    where id = #{id}
+  </update>
+</mapper>

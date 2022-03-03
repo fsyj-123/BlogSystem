@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.CommentMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.Comment">
+    <!--@mbg.generated-->
+    <!--@Table tb_comment-->
+    <id column="id" property="id" />
+    <result column="user_id" property="userId" />
+    <result column="article_id" property="articleId" />
+    <result column="comment_content" property="commentContent" />
+    <result column="create_time" property="createTime" />
+    <result column="reply_id" property="replyId" />
+    <result column="parent_id" property="parentId" />
+    <result column="is_delete" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, article_id, comment_content, create_time, reply_id, parent_id, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_comment
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_comment
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.Comment" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_comment (user_id, article_id, comment_content, create_time, reply_id, parent_id, 
+      is_delete)
+    values (#{userId}, #{articleId}, #{commentContent}, #{createTime}, #{replyId}, #{parentId}, 
+      #{isDelete})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.Comment" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="commentContent != null">
+        comment_content,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="replyId != null">
+        reply_id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="articleId != null">
+        #{articleId},
+      </if>
+      <if test="commentContent != null">
+        #{commentContent},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="replyId != null">
+        #{replyId},
+      </if>
+      <if test="parentId != null">
+        #{parentId},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.Comment">
+    <!--@mbg.generated-->
+    update tb_comment
+    <set>
+      <if test="userId != null">
+        user_id = #{userId},
+      </if>
+      <if test="articleId != null">
+        article_id = #{articleId},
+      </if>
+      <if test="commentContent != null">
+        comment_content = #{commentContent},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="replyId != null">
+        reply_id = #{replyId},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.Comment">
+    <!--@mbg.generated-->
+    update tb_comment
+    set user_id = #{userId},
+      article_id = #{articleId},
+      comment_content = #{commentContent},
+      create_time = #{createTime},
+      reply_id = #{replyId},
+      parent_id = #{parentId},
+      is_delete = #{isDelete}
+    where id = #{id}
+  </update>
+</mapper>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.OperationLogMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.OperationLog">
+    <!--@mbg.generated-->
+    <!--@Table tb_operation_log-->
+    <id column="id" property="id" />
+    <result column="opt_module" property="optModule" />
+    <result column="opt_type" property="optType" />
+    <result column="opt_url" property="optUrl" />
+    <result column="opt_method" property="optMethod" />
+    <result column="opt_desc" property="optDesc" />
+    <result column="request_param" property="requestParam" />
+    <result column="request_method" property="requestMethod" />
+    <result column="response_data" property="responseData" />
+    <result column="user_id" property="userId" />
+    <result column="nickname" property="nickname" />
+    <result column="ip_addr" property="ipAddr" />
+    <result column="ip_source" property="ipSource" />
+    <result column="create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, opt_module, opt_type, opt_url, opt_method, opt_desc, request_param, request_method, 
+    response_data, user_id, nickname, ip_addr, ip_source, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_operation_log
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_operation_log
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.OperationLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_operation_log (opt_module, opt_type, opt_url, opt_method, opt_desc, request_param, 
+      request_method, response_data, user_id, nickname, ip_addr, ip_source, 
+      create_time)
+    values (#{optModule}, #{optType}, #{optUrl}, #{optMethod}, #{optDesc}, #{requestParam}, 
+      #{requestMethod}, #{responseData}, #{userId}, #{nickname}, #{ipAddr}, #{ipSource}, 
+      #{createTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.OperationLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_operation_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="optModule != null">
+        opt_module,
+      </if>
+      <if test="optType != null">
+        opt_type,
+      </if>
+      <if test="optUrl != null">
+        opt_url,
+      </if>
+      <if test="optMethod != null">
+        opt_method,
+      </if>
+      <if test="optDesc != null">
+        opt_desc,
+      </if>
+      <if test="requestParam != null">
+        request_param,
+      </if>
+      <if test="requestMethod != null">
+        request_method,
+      </if>
+      <if test="responseData != null">
+        response_data,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="ipAddr != null">
+        ip_addr,
+      </if>
+      <if test="ipSource != null">
+        ip_source,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="optModule != null">
+        #{optModule},
+      </if>
+      <if test="optType != null">
+        #{optType},
+      </if>
+      <if test="optUrl != null">
+        #{optUrl},
+      </if>
+      <if test="optMethod != null">
+        #{optMethod},
+      </if>
+      <if test="optDesc != null">
+        #{optDesc},
+      </if>
+      <if test="requestParam != null">
+        #{requestParam},
+      </if>
+      <if test="requestMethod != null">
+        #{requestMethod},
+      </if>
+      <if test="responseData != null">
+        #{responseData},
+      </if>
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="nickname != null">
+        #{nickname},
+      </if>
+      <if test="ipAddr != null">
+        #{ipAddr},
+      </if>
+      <if test="ipSource != null">
+        #{ipSource},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.OperationLog">
+    <!--@mbg.generated-->
+    update tb_operation_log
+    <set>
+      <if test="optModule != null">
+        opt_module = #{optModule},
+      </if>
+      <if test="optType != null">
+        opt_type = #{optType},
+      </if>
+      <if test="optUrl != null">
+        opt_url = #{optUrl},
+      </if>
+      <if test="optMethod != null">
+        opt_method = #{optMethod},
+      </if>
+      <if test="optDesc != null">
+        opt_desc = #{optDesc},
+      </if>
+      <if test="requestParam != null">
+        request_param = #{requestParam},
+      </if>
+      <if test="requestMethod != null">
+        request_method = #{requestMethod},
+      </if>
+      <if test="responseData != null">
+        response_data = #{responseData},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname},
+      </if>
+      <if test="ipAddr != null">
+        ip_addr = #{ipAddr},
+      </if>
+      <if test="ipSource != null">
+        ip_source = #{ipSource},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.OperationLog">
+    <!--@mbg.generated-->
+    update tb_operation_log
+    set opt_module = #{optModule},
+      opt_type = #{optType},
+      opt_url = #{optUrl},
+      opt_method = #{optMethod},
+      opt_desc = #{optDesc},
+      request_param = #{requestParam},
+      request_method = #{requestMethod},
+      response_data = #{responseData},
+      user_id = #{userId},
+      nickname = #{nickname},
+      ip_addr = #{ipAddr},
+      ip_source = #{ipSource},
+      create_time = #{createTime}
+    where id = #{id}
+  </update>
+</mapper>

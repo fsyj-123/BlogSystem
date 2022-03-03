@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.ResourceMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.Resource">
+    <!--@mbg.generated-->
+    <!--@Table tb_resource-->
+    <id column="id" property="id" />
+    <result column="resource_name" property="resourceName" />
+    <result column="url" property="url" />
+    <result column="request_method" property="requestMethod" />
+    <result column="parent_id" property="parentId" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="is_disable" property="isDisable" />
+    <result column="is_anonymous" property="isAnonymous" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, resource_name, url, request_method, parent_id, create_time, update_time, is_disable, 
+    is_anonymous
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_resource
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_resource
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.Resource" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_resource (resource_name, url, request_method, parent_id, create_time, update_time, 
+      is_disable, is_anonymous)
+    values (#{resourceName}, #{url}, #{requestMethod}, #{parentId}, #{createTime}, #{updateTime}, 
+      #{isDisable}, #{isAnonymous})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.Resource" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resourceName != null">
+        resource_name,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="requestMethod != null">
+        request_method,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDisable != null">
+        is_disable,
+      </if>
+      <if test="isAnonymous != null">
+        is_anonymous,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resourceName != null">
+        #{resourceName},
+      </if>
+      <if test="url != null">
+        #{url},
+      </if>
+      <if test="requestMethod != null">
+        #{requestMethod},
+      </if>
+      <if test="parentId != null">
+        #{parentId},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+      <if test="isDisable != null">
+        #{isDisable},
+      </if>
+      <if test="isAnonymous != null">
+        #{isAnonymous},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.Resource">
+    <!--@mbg.generated-->
+    update tb_resource
+    <set>
+      <if test="resourceName != null">
+        resource_name = #{resourceName},
+      </if>
+      <if test="url != null">
+        url = #{url},
+      </if>
+      <if test="requestMethod != null">
+        request_method = #{requestMethod},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+      <if test="isDisable != null">
+        is_disable = #{isDisable},
+      </if>
+      <if test="isAnonymous != null">
+        is_anonymous = #{isAnonymous},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.Resource">
+    <!--@mbg.generated-->
+    update tb_resource
+    set resource_name = #{resourceName},
+      url = #{url},
+      request_method = #{requestMethod},
+      parent_id = #{parentId},
+      create_time = #{createTime},
+      update_time = #{updateTime},
+      is_disable = #{isDisable},
+      is_anonymous = #{isAnonymous}
+    where id = #{id}
+  </update>
+</mapper>

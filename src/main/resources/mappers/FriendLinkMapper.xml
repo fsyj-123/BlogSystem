@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.fsyj.blog.mapper.FriendLinkMapper">
+  <resultMap id="BaseResultMap" type="site.fsyj.blog.bean.FriendLink">
+    <!--@mbg.generated-->
+    <!--@Table tb_friend_link-->
+    <id column="id" property="id" />
+    <result column="link_name" property="linkName" />
+    <result column="link_avatar" property="linkAvatar" />
+    <result column="link_address" property="linkAddress" />
+    <result column="link_intro" property="linkIntro" />
+    <result column="create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, link_name, link_avatar, link_address, link_intro, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_friend_link
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_friend_link
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.FriendLink" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_friend_link (link_name, link_avatar, link_address, link_intro, create_time)
+    values (#{linkName}, #{linkAvatar}, #{linkAddress}, #{linkIntro}, #{createTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="site.fsyj.blog.bean.FriendLink" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_friend_link
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="linkName != null">
+        link_name,
+      </if>
+      <if test="linkAvatar != null">
+        link_avatar,
+      </if>
+      <if test="linkAddress != null">
+        link_address,
+      </if>
+      <if test="linkIntro != null">
+        link_intro,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="linkName != null">
+        #{linkName},
+      </if>
+      <if test="linkAvatar != null">
+        #{linkAvatar},
+      </if>
+      <if test="linkAddress != null">
+        #{linkAddress},
+      </if>
+      <if test="linkIntro != null">
+        #{linkIntro},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="site.fsyj.blog.bean.FriendLink">
+    <!--@mbg.generated-->
+    update tb_friend_link
+    <set>
+      <if test="linkName != null">
+        link_name = #{linkName},
+      </if>
+      <if test="linkAvatar != null">
+        link_avatar = #{linkAvatar},
+      </if>
+      <if test="linkAddress != null">
+        link_address = #{linkAddress},
+      </if>
+      <if test="linkIntro != null">
+        link_intro = #{linkIntro},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="site.fsyj.blog.bean.FriendLink">
+    <!--@mbg.generated-->
+    update tb_friend_link
+    set link_name = #{linkName},
+      link_avatar = #{linkAvatar},
+      link_address = #{linkAddress},
+      link_intro = #{linkIntro},
+      create_time = #{createTime}
+    where id = #{id}
+  </update>
+</mapper>
